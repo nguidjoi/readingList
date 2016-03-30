@@ -29,10 +29,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/").access("hasRole('READER')")
                 .antMatchers("/**").permitAll()
-                .and()
+            .and()
                 .formLogin()
                 .loginPage("/login")
-                .failureUrl("/login?error=true");
+                .failureUrl("/login?error=true")
+            .and()
+                .logout()
+                .logoutSuccessUrl("/");
     }
 
     @Override
